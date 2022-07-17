@@ -1,22 +1,37 @@
-print 'Hi! Enter your number card?'
-number_card = gets.chomp
+print 'Hi! Enter your number card? '
+numbers_card = gets.chomp
 
 
-def is_valid_credit_card(number_card)
+def is_valid_credit_card(numbers_card)
 
-	number_card =  number_card.gsub(/[^\d]/, '')
-	puts number_card
+	numbers_card =  numbers_card.gsub(/[^\d]/, '')
 
-	if number_card.empty?
+	if numbers_card.empty?
 	   puts "number_card is empty"
 	else
-	   puts "number_card is not empty"
-	end
+			
+		sum_hash = 0;
+		numbers_card = numbers_card.split("").map{ |n| n.to_i }
+
+		numbers_card.each_with_index do |item, index|
+
+	        if item%2 == 0 
+	            val = numbers_card[index];
+ 	        else 
+        		val = numbers_card[index] * 2;
+        		if val > 9
+        			val -= 9;
+    			end
+	        end
+	        sum_hash += val;
+		end
+		return (sum_hash % 10) == 0
+   	end
 end
 
 
-is_valid_credit_card(number_card)
-
-
-
-
+if is_valid_credit_card(numbers_card)
+	puts 'the card number is valid'
+else 
+	puts 'the card number is invalid'
+end
