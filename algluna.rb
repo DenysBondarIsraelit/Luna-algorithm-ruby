@@ -3,7 +3,7 @@
 print 'Hi! Enter your number card? '
 numbers_card = gets.chomp
 
-def valid_credit_card(numbers_card)
+def valid_card(numbers_card)
   numbers_card = numbers_card.gsub(/[^\d]/, '')
 
   if numbers_card.empty?
@@ -11,7 +11,7 @@ def valid_credit_card(numbers_card)
   else
 
     sum_hash = 0
-    numbers_card = numbers_card.split('').map { |n| n.to_i }
+    numbers_card = numbers_card.split('').map(&:to_i)
 
     numbers_card.each_with_index do |item, index|
       if item.even?
@@ -26,7 +26,7 @@ def valid_credit_card(numbers_card)
   end
 end
 
-if valid_credit_card(numbers_card)
+if valid_card(numbers_card)
   puts 'the card number is valid'
 else
   puts 'the card number is invalid'
