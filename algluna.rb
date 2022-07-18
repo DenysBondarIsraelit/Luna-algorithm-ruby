@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 print 'Hi! Enter your number card? '
 numbers_card = gets.chomp
 
-def is_valid_credit_card(numbers_card)
+def valid_credit_card(numbers_card)
   numbers_card = numbers_card.gsub(/[^\d]/, '')
 
   if numbers_card.empty?
@@ -20,11 +22,11 @@ def is_valid_credit_card(numbers_card)
       end
       sum_hash += val
     end
-    (sum_hash % 10) == 0
+    (sum_hash % 10).zero?
   end
 end
 
-if is_valid_credit_card(numbers_card)
+if valid_credit_card(numbers_card)
   puts 'the card number is valid'
 else
   puts 'the card number is invalid'
